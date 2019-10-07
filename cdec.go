@@ -38,7 +38,6 @@ func ScanFreqsFromReader(reader io.Reader) (FreqCount, error) {
 	return freqToRet, err
 }
 func FreqOfWord(word string, freqMap FreqCount) float64 {
-	//	 var freq float64 = float64(wordCount[word]) / float64(numWords) * 100
 	freq := (freqMap.Freqs[word] / float64(freqMap.numWords)) * 100
 	return freq
 }

@@ -13,15 +13,12 @@ func fileRead(fileName string) *os.File {
 
 	print("Filename: " + fileName + "\n")
 	inFile, err := os.Open(fileName)
-
-	//T , err := os.Open("testFile.txt")
 	if err != nil {
 		print("ERROR during fileRead ")
 		print(err.Error())
 
 		return nil
 	}
-	//defer inFile.Close()
 	return inFile
 }
 func userInput() (string, error) {
