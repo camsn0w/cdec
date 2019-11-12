@@ -5,16 +5,16 @@ import (
 	"cdec"
 	"flag"
 	"fmt"
+	_ "io"
 	"os"
 	"strings"
 )
 
 func fileRead(fileName string) *os.File {
-
 	print("Filename: " + fileName + "\n")
 	inFile, err := os.Open(fileName)
 	if err != nil {
-		print("ERROR during fileRead ")
+		print("\nERROR during fileRead\n ")
 		print(err.Error())
 
 		return nil
@@ -57,8 +57,9 @@ func main() {
 	word, _ := userInput()
 	flag.Parse()
 	fileName := flag.Arg(0)
+	//fileName = "test.txt"
 	inputFile := fileRead(fileName)
-	var reader = bufio.NewReader(inputFile)
+	var reader = bufio.NewReader(inputFile) // Working on this currently with NewReader method
 	freqData, err := cdec.ScanFreqsFromReader(reader)
 	if err != nil {
 
