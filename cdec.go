@@ -14,6 +14,7 @@ func ScanFreqsFromReader(reader io.Reader) (FreqCount, error) {
 		err := errors.New("file is empty")
 		freqErr := FreqCount{nil, 0}
 		return freqErr, err
+
 	}
 	//aheadReader := reader
 	wordCount := make(map[string]float64)
