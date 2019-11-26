@@ -10,16 +10,16 @@ import (
 	"strings"
 )
 
-func fileRead(fileName string) *os.File {
+func fileRead(fileName string) (*os.File, error) {
 	print("Filename: " + fileName + "\n")
 	inFile, err := os.Open(fileName)
 	if err != nil {
 		print("\nERROR during fileRead\n ")
 		print(err.Error())
 
-		return nil
+		return nil, nil
 	}
-	return inFile
+	return inFile, err
 }
 func userInput() (string, error) {
 	fmt.Printf("%s", "Enter a word to search for: ")
@@ -58,7 +58,7 @@ func main() {
 	flag.Parse()
 	fileName := flag.Arg(0)
 	//fileName = "test.txt"
-	inputFile := fileRead(fileName)
+	inputFile, _ := fileRead(fileName)
 	var reader = bufio.NewReader(inputFile) // Working on this currently with NewReader method
 	freqData, err := cdec.ScanFreqsFromReader(reader)
 	if err != nil {
